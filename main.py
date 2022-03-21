@@ -1,3 +1,4 @@
+# TODO re-watch the last lesson and preprocess the matrix
 A = [[55, 4, 5, 4],
     [-5, 8, 9, 5],
     [-6, 7, 11, 7]]
