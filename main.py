@@ -1,6 +1,6 @@
-A = [[0.001, 2, 0, 5],
-    [1, -0.001, 0.005, 1],
-    [0.1, 100, 1, 600]]
+A = [[1, 1, 1, 5],
+    [2, 7, 0, 500],
+    [2, 0, 300, 700]]
 
 # assuming n by n+1 matrix
 def solveMatrix(matrix, size):
@@ -49,7 +49,7 @@ def editMatrix(matrix, x, y, val):
     matrix[x][y] = val
     return matrix
 
-# assuming n by n+1 matrix
+# assuming nxn+1 matrix
 def multiplyMatrices(matrix1, matrix2, size):
     mat = []
     for i in range(size+1):
@@ -61,6 +61,8 @@ def multiplyMatrices(matrix1, matrix2, size):
             for k in range(size):
                 sum += matrix1[i][k] * matrix2[k][j]
             mat[i].append(sum)
+
+    printMultiplication(matrix1, matrix2, mat, size, size)
     return mat
 
 def nullify(matrix, x, y, size, pivot):
@@ -77,6 +79,20 @@ def printMatrix(A, size, size2):
             print(A[i][j], end=' ')
         print()
 
-
+# assuming nxn+1
+def printMultiplication(A, B, res, size, size2):
+    for i in range(size):
+        print('[', end =' ')
+        for j in range(size2):
+            print('{:6.2f}'.format(A[i][j]), end='\t')
+        print('] [', end =' ')
+        for j in range(size2 + 1):
+            print('{:6.2f}'.format(B[i][j]), end='\t')
+        print(']\t\t[', end=' ')
+        for j in range(size2 + 1):
+            print('{:6.2f}'.format(res[i][j]), end='\t')
+        print(']', end='')
+        print()
+    print()
 
 printMatrix(solveMatrix(A, 3), 3, 4)
