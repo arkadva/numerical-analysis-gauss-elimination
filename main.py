@@ -1,6 +1,6 @@
-A = [[1, 1, 1, 5],
-    [2, 7, 0, 500],
-    [2, 0, 300, 700]]
+A = [[2, 1, 0, -3],
+    [3, -1, 0, 1],
+    [1, 4, -2, -5]]
 
 # assuming n by n+1 matrix
 def solveMatrix(matrix, size):
@@ -73,26 +73,28 @@ def setPivotToOne(matrix, x, y, size):
     identity = identityMatrix(size)
     return multiplyMatrices(editMatrix(identity, x, y, 1/matrix[x][y]), matrix, size)
 
+# assuming nxn+1
+def printMultiplication(A, B, res, size, size2):
+    for i in range(size):
+        print('[', end =' ')
+        for j in range(size2):
+            print('{:6.4f}'.format(A[i][j]), end='\t')
+        print('] [', end =' ')
+        for j in range(size2 + 1):
+            print('{:6.4f}'.format(B[i][j]), end='\t')
+        print(']\t\t[', end=' ')
+        for j in range(size2 + 1):
+            print('{:6.4f}'.format(res[i][j]), end='\t')
+        print(']', end='')
+        print()
+    print()
+
 def printMatrix(A, size, size2):
     for i in range(size):
         for j in range(size2):
             print(A[i][j], end=' ')
         print()
 
-# assuming nxn+1
-def printMultiplication(A, B, res, size, size2):
-    for i in range(size):
-        print('[', end =' ')
-        for j in range(size2):
-            print('{:6.2f}'.format(A[i][j]), end='\t')
-        print('] [', end =' ')
-        for j in range(size2 + 1):
-            print('{:6.2f}'.format(B[i][j]), end='\t')
-        print(']\t\t[', end=' ')
-        for j in range(size2 + 1):
-            print('{:6.2f}'.format(res[i][j]), end='\t')
-        print(']', end='')
-        print()
-    print()
-
-printMatrix(solveMatrix(A, 3), 3, 4)
+solution = solveMatrix(A, 3)
+print("FINAL SOLUTION")
+printMatrix(solution, 3, 4)
